@@ -37,7 +37,7 @@ MESES_PT = {
     "jan":1,"fev":2,"mar":3,"abr":4,"mai":5,"jun":6,
     "jul":7,"ago":8,"set":9,"out":10,"nov":11,"dez":12,
 }
-DIAS_SEMANA = ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"]
+DIAS_SEMANA = ["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"]
 
 GRID_TOP=0.165; GRID_BOTTOM=0.775
 HEADER_TOP=0.03; HEADER_BOTTOM=0.14
@@ -109,7 +109,7 @@ def classificar_celula(cell):
 
 def obter_posicoes_mes(mes,ano):
     fw,nd = calendar.monthrange(ano,mes)
-    sc = (fw+1)%7
+    sc = fw  # 0=Seg ... 6=Dom
     return [(d,(sc+d-1)//7,(sc+d-1)%7) for d in range(1,nd+1)], sc, nd
 
 def extrair_turnos(img,mes,ano):
@@ -189,7 +189,7 @@ def desenhar(resultados,mes,ano):
         if turno!="?":
             bbox = draw.textbbox((0,0),turno,font=f_turno)
             tw,th = bbox[2]-bbox[0],bbox[3]-bbox[1]
-            draw.text((x+(CEL_W-tw)//2, y+(CEL_H-th)//2+10), turno, fill=TEXT_LIGHT, font=f_turno)
+            draw.text((x+(CEL_W-tw)//2, y+(CEL_H-th)//2+10), label, fill=TEXT_LIGHT, font=f_turno)
 
     # Legenda
     ordem = ["Manhã","Tarde","Noite","Descanso","Férias","M+T"]
@@ -248,6 +248,7 @@ HTML = """<!DOCTYPE html>
     color: #8e8e93;
     margin-bottom: 28px;
   }
+  .aviso { background:#fff8e1; border-radius:12px; padding:10px 14px; font-size:13px; color:#7a6000; margin-bottom:16px; line-height:1.4; }
   .upload-area {
     border: 2px dashed #d1d1d6;
     border-radius: 16px;
@@ -326,6 +327,7 @@ HTML = """<!DOCTYPE html>
 <div class="card">
   <h1>📅 Turnos</h1>
   <p class="sub">Carrega o print do teu calendário</p>
+  <div class="aviso">⚙️ Certifica-te que o teu calendário está configurado para começar na <strong>Segunda-feira</strong></div>
 
   <div class="upload-area" id="dropZone">
     <input type="file" id="fileInput" accept="image/*">
