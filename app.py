@@ -26,15 +26,15 @@ MAPA_TURNO = {
     "Descanso": "Folga", "Férias": "Férias", "D": "Descanso",
 }
 CORES_TURNOS = {
-    "Manhã":    (52,  168, 130),
-    "Tarde":    (108,  92, 231),
-    "Noite":    (52,   73, 120),
-    "Descanso": (245, 200,  80),
-    "Férias":   (255, 140,  80),
-    "Folga":    (230, 190,  60),   # amarelo torrado — parecido com Descanso mas distinto
-    "M+T":      (220,  90, 150),
-    "M+N":      (50,   90, 160),   # azul escuro — Manhã + Noite
-    "T+N":      (90,   60, 180),   # roxo escuro — Tarde + Noite
+    "Manhã":    (64,  178, 172),   # azul esverdeado suave
+    "Tarde":    (242, 130, 110),   # salmão
+    "Noite":    (45,   95, 115),   # azul petróleo
+    "Descanso": (248, 160,  80),   # laranja suave
+    "Férias":   (100, 195, 165),   # verde menta
+    "Folga":    (248, 210,  80),   # amarelo mel
+    "M+T":      (153, 154, 141),   # mistura Manhã + Tarde
+    "M+N":      (55,  135, 145),   # mistura Manhã + Noite
+    "T+N":      (145, 110, 110),   # mistura Tarde + Noite
 }
 MESES_PT = {
     "jan":1,"fev":2,"mar":3,"abr":4,"mai":5,"jun":6,
@@ -160,7 +160,7 @@ def nome_mes_pt(mes):
 def desenhar(resultados,mes,ano):
     COLS=7; PAD=40; CEL_W=140; CEL_H=110; GAP=7
     HEADER_H=90; WEEKDAY_H=34; LEGEND_H=50; RADIUS=12
-    BG=(250,250,252); TEXT_DARK=(30,30,40); TEXT_MID=(120,120,135); TEXT_LIGHT=(255,255,255)
+    BG=(245,246,248); TEXT_DARK=(30,30,40); TEXT_MID=(120,120,135); TEXT_LIGHT=(255,255,255)
 
     def fonte(tamanho, bold=False):
         caminhos = [
@@ -209,7 +209,7 @@ def desenhar(resultados,mes,ano):
     for slot in range(sc):
         x = PAD+(slot%(COLS))*(CEL_W+GAP)
         y = y_grid
-        draw.rounded_rectangle([x,y,x+CEL_W,y+CEL_H], radius=RADIUS, fill=(240,240,244))
+        draw.rounded_rectangle([x,y,x+CEL_W,y+CEL_H], radius=RADIUS, fill=(232,233,236))
 
     # Células com turnos
     for dia,turno in resultados:
