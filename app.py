@@ -23,7 +23,7 @@ REF_CORES = {
 }
 MAPA_TURNO = {
     "Manhã": "Manhã", "Tarde": "Tarde", "Noite": "Noite",
-    "Descanso": "Descanso", "Férias": "Férias", "D": "Descanso",
+    "Descanso": "Folga", "Férias": "Férias", "D": "Descanso",
 }
 CORES_TURNOS = {
     "Manhã":    (52,  168, 130),
@@ -31,6 +31,7 @@ CORES_TURNOS = {
     "Noite":    (52,   73, 120),
     "Descanso": (245, 200,  80),
     "Férias":   (255, 140,  80),
+    "Folga":    (230, 190,  60),   # amarelo torrado — parecido com Descanso mas distinto
     "M+T":      (220,  90, 150),
     "M+N":      (50,   90, 160),   # azul escuro — Manhã + Noite
     "T+N":      (90,   60, 180),   # roxo escuro — Tarde + Noite
@@ -131,7 +132,7 @@ def aplicar_regra_noite(resultados):
             dia_ant = dia - 1
             if dia_ant in turnos:
                 ant = turnos[dia_ant]
-                if ant == "Descanso":
+                if ant in ("Descanso", "Folga"):
                     novo[dia_ant] = "Noite"
                 elif ant == "Manhã":
                     novo[dia_ant] = "M+N"
@@ -228,7 +229,7 @@ def desenhar(resultados,mes,ano):
             draw.text((x+(CEL_W-tw)//2, y+(CEL_H-th)//2+4), label, fill=TEXT_LIGHT, font=f_usar)
 
     # Legenda
-    ordem = ["Manhã","Tarde","Noite","Descanso","Férias","M+T","M+N","T+N"]
+    ordem = ["Manhã","Tarde","Noite","Descanso","Folga","Férias","M+T","M+N","T+N"]
     presentes = [t for t in ordem if any(t==tu for _,tu in resultados)]
     y_leg = y_grid+num_rows*(CEL_H+GAP)+14
     lx = PAD
