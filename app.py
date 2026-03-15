@@ -187,7 +187,8 @@ def desenhar(resultados,mes,ano):
         draw.rounded_rectangle([x,y,x+CEL_W,y+CEL_H], radius=RADIUS, fill=cor)
         draw.text((x+12,y+10), str(dia), fill=TEXT_LIGHT, font=f_dia_num)
         if turno!="?":
-            bbox = draw.textbbox((0,0),turno,font=f_turno)
+            label = ('😴 ' if turno=='Descanso' else '') + turno
+            bbox = draw.textbbox((0,0),label,font=f_turno)
             tw,th = bbox[2]-bbox[0],bbox[3]-bbox[1]
             draw.text((x+(CEL_W-tw)//2, y+(CEL_H-th)//2+10), label, fill=TEXT_LIGHT, font=f_turno)
 
