@@ -32,9 +32,9 @@ CORES_TURNOS = {
     "Descanso": (248, 160,  80),   # laranja suave
     "Férias":   (100, 195, 165),   # verde menta
     "Folga":    (248, 210,  80),   # amarelo mel
-    "M+T":      (153, 154, 141),   # mistura Manhã + Tarde
+    "M+T":      (90,  170, 145),   # esverdeado — mistura Manhã + Tarde
     "M+N":      (55,  135, 145),   # mistura Manhã + Noite
-    "T+N":      (145, 110, 110),   # mistura Tarde + Noite
+    "T+N":      (70,  130, 155),   # azulado — mistura Tarde + Noite
 }
 MESES_PT = {
     "jan":1,"fev":2,"mar":3,"abr":4,"mai":5,"jun":6,
