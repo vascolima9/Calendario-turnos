@@ -181,7 +181,7 @@ def desenhar(resultados,mes,ano):
     f_leg     = fonte(14)
 
     fw,nd = calendar.monthrange(ano,mes)
-    sc = (fw+1)%7
+    sc = fw  # 0=Seg ... 6=Dom
     num_rows = ((sc+nd-1)//7)+1
 
     largura = PAD*2 + COLS*CEL_W + (COLS-1)*GAP
