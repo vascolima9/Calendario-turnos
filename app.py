@@ -197,7 +197,7 @@ def desenhar(resultados,mes,ano):
     y_sem = PAD+HEADER_H
     for c,d in enumerate(DIAS_SEMANA):
         x = PAD+c*(CEL_W+GAP)
-        cor = (200,60,80) if c==0 else TEXT_MID
+        cor = (200,60,80) if c==6 else TEXT_MID
         bbox = draw.textbbox((0,0),d,font=f_semana)
         draw.text((x+(CEL_W-(bbox[2]-bbox[0]))//2, y_sem+8), d, fill=cor, font=f_semana)
 
