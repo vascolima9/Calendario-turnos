@@ -1,5 +1,0 @@
-[phases.setup]
-nixPkgs = ["tesseract5", "tesseract5.traineddata.por"]
-
-[start]
-cmd = "python app.py"
