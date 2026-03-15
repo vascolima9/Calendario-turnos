@@ -137,8 +137,10 @@ def aplicar_regra_noite(resultados):
                     novo[dia_ant] = "M+N"
                 elif ant == "Tarde":
                     novo[dia_ant] = "T+N"
-            # O dia da Noite passa sempre a Descanso
-            novo[dia] = "Descanso"
+            # O dia da Noite só vira Descanso se o dia seguinte NÃO for também Noite
+            dia_seg = dia + 1
+            if turnos.get(dia_seg) != "Noite":
+                novo[dia] = "Descanso"
 
     return [(d, novo[d]) for d, _ in resultados]
 
