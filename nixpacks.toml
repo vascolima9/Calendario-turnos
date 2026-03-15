@@ -1,0 +1,5 @@
+[phases.setup]
+nixPkgs = ["tesseract", "tesseract-lang"]
+
+[start]
+cmd = "python app.py"
